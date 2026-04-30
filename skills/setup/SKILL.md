@@ -26,7 +26,32 @@ Read `{scuttle.memory_path}/job-search-profile.md`.
 
 ---
 
-## Step 1 — Who You Are
+## Step 1 — Resume Paste (Optional)
+
+Ask:
+> "Paste your resume text here and I'll use it to pre-fill your background, credentials, and past employers. Or type 'skip' to answer manually."
+
+**If they paste:**
+Extract the following and hold in memory for the steps below — do not write the file yet:
+- **Who I Am draft** — one paragraph summarising their background: roles held, companies, context, years of experience. Write in first person, clean up formatting.
+- **Positioning Statement draft** — infer from their most recent role and trajectory what they're best suited for.
+- **Credential notes** — most recent title, company, tenure. Used for Honest Credential Calibration section.
+- **De-Prioritize seeds** — any companies they've recently left or that appear as past employers (likely don't want to re-surface their own old employer as a new find).
+- **Network anchor seeds** — any co-founders, named collaborators, or notable organizations mentioned.
+
+Tell the user what was extracted before moving on:
+> "Got it. Here's what I pulled from your resume: [brief summary of extracted info]. I'll use this to fill in your background sections. Now I need a few things your resume can't tell me."
+
+Then skip to Step 3 — Target Role Titles (Steps 2 and the background questions are covered by the resume).
+
+**If they skip:**
+Proceed to Step 2.
+
+---
+
+## Step 2 — Who You Are
+
+*(Skip if resume was provided in Step 1)*
 
 Ask:
 > "Tell me about your background in a few sentences — what have you built, what roles have you held, and what context do you operate best in?"
@@ -35,7 +60,9 @@ Wait for the answer. Write it as-is (lightly cleaned up) as the `## Who I Am` se
 
 ---
 
-## Step 2 — Positioning Statement
+## Step 2b — Positioning Statement
+
+*(Skip if resume was provided in Step 1 — use the inferred draft)*
 
 Ask:
 > "In one sentence: what kind of role are you uniquely suited for — and what are you NOT?"
@@ -161,7 +188,7 @@ Write as `## De-Prioritize (already applied or passed)`. If none, write `(none y
 
 ## Step 13 — Write Files and Confirm
 
-1. Assemble the complete profile from all collected answers.
+1. Assemble the complete profile from all collected answers. If a resume was provided, include an `## Honest Credential Calibration` section using the extracted credential notes — most recent title, company, tenure, and a plain-language note about what that background realistically signals to a recruiter.
 2. Write to `{scuttle.memory_path}/job-search-profile.md`.
 3. Re-read the file immediately to confirm the write succeeded.
 4. If `{scuttle.memory_path}/job-search-patterns.md` does not exist, create it with empty sections:
