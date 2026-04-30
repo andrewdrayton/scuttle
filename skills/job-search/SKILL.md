@@ -33,7 +33,8 @@ This skill reads from three memory files:
 
 IMPORTANT: Always use the path configured in `scuttle.memory_path`. Do not hardcode paths. Reading from the wrong path returns a blank scaffold that looks like an unfilled template — do not interrupt the user to ask them to fill it in without first confirming the file is also empty at the configured path.
 
-If the profile file does not exist, prompt the user to create one using the template at the end of this skill.
+If the profile file does not exist, do not proceed with the search. Tell the user:
+"No profile found at `{scuttle.memory_path}/job-search-profile.md`. Run `setup` to create your profile conversationally, or copy `memory/profile.example.md` from the skill directory and fill in the placeholders manually."
 
 If the sources file does not exist, create it with empty sections and seed it with a few known-good ATS endpoints based on the user's watch list.
 
@@ -351,10 +352,6 @@ If nothing scored above 5 on Fit, say so plainly: "Nothing strong this cycle. [N
 - Do not use the recall tool during a "scuttle" run. Read memory files directly.
 - Do not run discovery during a "scuttle" run. Discovery is a separate explicit command.
 - Do not split ATS fetching across multiple Python executions during a "scuttle" run. One script, all endpoints, filter and deduplicate inside it.
-
-## Profile Template
-
-If the profile file does not exist, prompt the user to create one with these sections: Who I Am (one paragraph background), Target Role Titles, Target Company Profile (stage, size, type), Target Industries, Location Preferences (home base, remote priority, relocation list, hard exclusions), Hard Exclusions (skip without scoring), Track System (definitions for Track 1, Track 2, Track 2B), Scoring Framework (the dimensions and scale), Watch List (companies to flag immediately), De-Prioritize (already applied or passed), and Curated Job Boards (Tier 1 sources for their target industries).
 
 ## Sources File Template
 
