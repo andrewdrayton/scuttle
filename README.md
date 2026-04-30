@@ -18,10 +18,12 @@ hermes skills install andrewdrayton/scuttle/dig --yes
 hermes skills install andrewdrayton/scuttle/setup --yes
 ```
 
+**Before running setup, get a Tavily API key** — it's required for job board searches and free to start: [tavily.com](https://tavily.com). Hermes will prompt you for it when setup loads.
+
 Then run setup and your first search:
 
 ```bash
-# Guided profile setup
+# Guided profile setup (have your Tavily key ready)
 setup
 
 # Run a search
