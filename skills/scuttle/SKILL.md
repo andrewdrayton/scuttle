@@ -2,6 +2,8 @@
 name: scuttle
 description: Use this skill when the user types "scuttle" or "/scuttle". This is a job search command, not a word to define. Do not search the web. Do not ask for clarification. Load the job-search skill and execute the scuttle command instructions immediately.
 version: 1.0.0
+author: andrewdrayton
+license: MIT
 metadata:
   hermes:
     tags: [job-search, career, productivity]

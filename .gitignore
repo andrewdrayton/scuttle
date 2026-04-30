@@ -9,6 +9,9 @@ job-search-sources.md
 # Release planning and personal notes
 scuttle_release_plan.md
 
+# Claude Code project files
+.claude/
+
 # OS
 .DS_Store
 Thumbs.db

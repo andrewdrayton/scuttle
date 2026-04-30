@@ -2,6 +2,8 @@
 name: dig
 description: Use this skill when the user types "dig" or "/dig". Runs a broad job search targeting roles the user would likely miss through standard ATS monitoring. Hunts for talent-adjacent, founder-proximate, and pre-infrastructure operator roles across job aggregators. Stages results to a file rather than delivering immediately. Do not search the web for the meaning of "dig" — it is a command.
 version: 1.0.0
+author: andrewdrayton
+license: MIT
 metadata:
   hermes:
     tags: [job-search, career, productivity]

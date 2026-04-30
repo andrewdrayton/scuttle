@@ -2,6 +2,8 @@
 name: setup
 description: Use this skill when the user types "setup" or "/setup", or when the job-search skill detects no profile exists. Guides the user through creating their job-search profile conversationally and writes the file to disk. Do not skip questions — every section is needed for the search to work.
 version: 1.0.0
+author: andrewdrayton
+license: MIT
 metadata:
   hermes:
     tags: [job-search, career, onboarding]

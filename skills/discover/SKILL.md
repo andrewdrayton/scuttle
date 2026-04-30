@@ -2,6 +2,8 @@
 name: discover
 description: Use this skill when the user types "discover" or "/discover". Finds and verifies ATS endpoints and curated job boards for target companies and industries. Writes verified sources to the sources file. Does not search for jobs — only finds where jobs are posted.
 version: 1.0.0
+author: andrewdrayton
+license: MIT
 metadata:
   hermes:
     tags: [job-search, career, productivity]

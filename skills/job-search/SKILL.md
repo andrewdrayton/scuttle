@@ -2,6 +2,8 @@
 name: job-search
 description: Use this skill for any scheduled or ad-hoc job search task. Reads the user's profile, learned patterns, and verified sources from memory files. Surfaces, scores, and reports relevant open roles. Includes a learning loop that improves recommendations over time and a source discovery workflow that maintains its own registry of working career page URLs and ATS endpoints.
 version: 1.0.0
+author: andrewdrayton
+license: MIT
 metadata:
   hermes:
     tags: [job-search, career, productivity]
