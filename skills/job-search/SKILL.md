@@ -63,7 +63,7 @@ If the user sends a message that is exactly or approximately "scuttle" (case-ins
 ### Hard Rules for "scuttle"
 
 - **No recall tool.** Read the three memory files directly. Never use semantic recall on "scuttle" — it is slow, expensive, and less reliable than a direct file read.
-- **No discovery.** Never probe new companies, test new ATS endpoints, or run adjacency searches during a "scuttle" run. Discovery is a separate command triggered explicitly by the user.
+- **No discovery. This applies even on the first run with an empty sources file.** Never probe new companies, test new ATS endpoints, fetch career pages, or run adjacency searches during a "scuttle" run. If the sources file is empty or has no verified endpoints, run Tier 1 Tavily board searches only (max 5) and deliver the report with what you find. Do not compensate for an empty sources file by doing discovery inline — tell the user to run a dedicated discovery session after the report.
 - **One Python script for ATS fetching.** Batch all verified ATS endpoint calls into a single execution. Filter and deduplicate inside the same script before returning results.
 - **No redundant fetches.** If a Tavily search returns a result, do not also fetch the page unless the user asks for more detail. Tavily snippets are sufficient for scoring.
 - **Max 15 sources per run.** If the verified sources list exceeds 15, prioritize those most recently updated or most likely to have relevant roles. Log skipped sources in session stats.

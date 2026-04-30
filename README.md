@@ -32,6 +32,8 @@ scuttle
 
 Setup walks you through building your profile conversationally. Paste your resume to skip the background questions, or answer them manually. Takes about 5 minutes.
 
+> **First search takes longer.** With no verified sources yet, the skill discovers ATS endpoints and curated boards from scratch — expect 8-15 minutes. Subsequent runs are faster as your sources file builds up. By run 3-4 you should be down to 2-3 minutes.
+
 ---
 
 ## How It Works
