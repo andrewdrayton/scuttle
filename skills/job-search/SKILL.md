@@ -1,11 +1,22 @@
-<!-- NOTE: Memory file paths (/opt/data/memories/) are Hermes/VPS reference paths.
-     See docs/setup.md for other environments.
-     DECISION PENDING: This file may be merged into the root SKILL.md (Option A)
-     or kept here as skills/job-search/SKILL.md (Option B, current). -->
-
 ---
 name: job-search
 description: Use this skill for any scheduled or ad-hoc job search task. Reads the user's profile, learned patterns, and verified sources from memory files. Surfaces, scores, and reports relevant open roles. Includes a learning loop that improves recommendations over time and a source discovery workflow that maintains its own registry of working career page URLs and ATS endpoints.
+version: 1.0.0
+metadata:
+  hermes:
+    tags: [job-search, career, productivity]
+    category: personal
+    requires_toolsets: [terminal, web]
+    config:
+      - key: scuttle.memory_path
+        description: "Directory where Scuttle memory files (profile, patterns, sources) are stored"
+        default: "~/.hermes/memories"
+        prompt: "Where should Scuttle store its memory files? (default: ~/.hermes/memories)"
+required_environment_variables:
+  - name: TAVILY_API_KEY
+    prompt: Tavily API key (required for job board searches)
+    help: Get a free key at https://tavily.com
+    required_for: job board search functionality
 ---
 
 # Job Search Skill
@@ -16,11 +27,11 @@ A self-improving job search agent that surfaces, scores, and tracks roles based 
 
 This skill reads from three memory files:
 
-- `/opt/data/memories/job-search-profile.md` — user-defined profile (target roles, exclusions, scoring criteria)
-- `/opt/data/memories/job-search-patterns.md` — learned patterns from user feedback
-- `/opt/data/memories/job-search-sources.md` — verified working sources, discovered career pages, and failed sources
+- `{scuttle.memory_path}/job-search-profile.md` — user-defined profile (target roles, exclusions, scoring criteria)
+- `{scuttle.memory_path}/job-search-patterns.md` — learned patterns from user feedback
+- `{scuttle.memory_path}/job-search-sources.md` — verified working sources, discovered career pages, and failed sources
 
-IMPORTANT: The canonical path is `/opt/data/memories/`, NOT `~/.hermes/memories/`. These are different locations. Always use the full `/opt/data/memories/` path. Reading from the wrong path returns a blank scaffold that looks like an unfilled template — do not interrupt the user to ask them to fill it in without first confirming the file is also empty at `/opt/data/memories/`.
+IMPORTANT: Always use the path configured in `scuttle.memory_path`. Do not hardcode paths. Reading from the wrong path returns a blank scaffold that looks like an unfilled template — do not interrupt the user to ask them to fill it in without first confirming the file is also empty at the configured path.
 
 If the profile file does not exist, prompt the user to create one using the template at the end of this skill.
 
@@ -40,9 +51,9 @@ A search session is bounded:
 
 If the user sends a message that is exactly or approximately "scuttle" (case-insensitive, with or without punctuation), treat it as a full search run command. Do not ask for clarification. Execute the following sequence automatically:
 
-1. Read `/opt/data/memories/job-search-profile.md` — direct file read, no recall tool
-2. Read `/opt/data/memories/job-search-patterns.md` — direct file read, no recall tool
-3. Read `/opt/data/memories/job-search-sources.md` — direct file read, no recall tool
+1. Read `{scuttle.memory_path}/job-search-profile.md` — direct file read, no recall tool
+2. Read `{scuttle.memory_path}/job-search-patterns.md` — direct file read, no recall tool
+3. Read `{scuttle.memory_path}/job-search-sources.md` — direct file read, no recall tool
 4. Run one Python script that hits all verified ATS endpoints sequentially, filters by relevant titles, deduplicates against already-seen roles in the patterns file, and scores results. All in a single execution.
 5. Run Tavily searches on Tier 1 boards using site-scoped queries (max 3 searches)
 6. Apply learned patterns to adjust scores
@@ -243,7 +254,7 @@ Examples:
   - "hate this company" → suppress this company from all future results permanently; log to sources file as excluded
   - "too corporate" → reduce Fit score for roles at large established companies
   - "coordinator level" → reduce Fit for roles where scope is support rather than ownership
-- Write the extracted pattern to `/opt/data/memories/job-search-patterns.md` in plain language, dated
+- Write the extracted pattern to `{scuttle.memory_path}/job-search-patterns.md` in plain language, dated
 
 **"tell me more"**
 - Pull full job description via Tavily fetch or ATS endpoint detail

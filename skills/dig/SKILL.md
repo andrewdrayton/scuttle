@@ -1,6 +1,22 @@
 ---
 name: dig
 description: Use this skill when the user types "dig" or "/dig". Runs a broad job search targeting roles the user would likely miss through standard ATS monitoring. Hunts for talent-adjacent, founder-proximate, and pre-infrastructure operator roles across job aggregators. Stages results to a file rather than delivering immediately. Do not search the web for the meaning of "dig" — it is a command.
+version: 1.0.0
+metadata:
+  hermes:
+    tags: [job-search, career, productivity]
+    category: personal
+    requires_toolsets: [terminal, web]
+    config:
+      - key: scuttle.memory_path
+        description: "Directory where Scuttle memory files are stored"
+        default: "~/.hermes/memories"
+        prompt: "Where should Scuttle store its memory files? (default: ~/.hermes/memories)"
+required_environment_variables:
+  - name: TAVILY_API_KEY
+    prompt: Tavily API key (required for job board searches)
+    help: Get a free key at https://tavily.com
+    required_for: job board search functionality
 ---
 
 # Dig
@@ -72,7 +88,7 @@ For each result returned apply the profile rubric from the job-search skill. Add
 
 Do not deliver results inline unless there are 3 or fewer roles worth surfacing. Stage results to:
 
-`/opt/data/memories/dig-staging.md`
+`{scuttle.memory_path}/dig-staging.md`
 
 Append each session's finds under a dated header. Format matches the scuttle report format: numbered list, Fit and Cred scores, one-sentence justification, URL.
 
@@ -96,4 +112,4 @@ A clean dig session should cost 25-40K tokens. Cap is 50K. If approaching the ca
 
 ## The "digest" Command
 
-When the user types "digest", read `/opt/data/memories/dig-staging.md` and deliver all unreviewed results in the scuttle report format. After the user gives feedback, write patterns to the job-search patterns file exactly as the scuttle feedback loop does. Mark reviewed items in the staging file so they are not re-surfaced.
+When the user types "digest", read `{scuttle.memory_path}/dig-staging.md` and deliver all unreviewed results in the scuttle report format. After the user gives feedback, write patterns to the job-search patterns file exactly as the scuttle feedback loop does. Mark reviewed items in the staging file so they are not re-surfaced.
