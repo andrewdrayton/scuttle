@@ -10,21 +10,16 @@ Most AI job search tools are static wrappers around a search. Scuttle isn't — 
 
 ## Quick Start
 
-**Option A — Direct install**
-```bash
-hermes skills install github:andrewdrayton/scuttle
-```
-
-**Option B — Tap (recommended for multi-skill install)**
 ```bash
 hermes skills tap add andrewdrayton/scuttle
-hermes skills install scuttle
-hermes skills install job-search
-hermes skills install dig
-hermes skills install setup
+hermes skills install andrewdrayton/scuttle/scuttle --yes
+hermes skills install andrewdrayton/scuttle/job-search --yes
+hermes skills install andrewdrayton/scuttle/dig --yes
+hermes skills install andrewdrayton/scuttle/setup --yes
 ```
 
 Then run setup and your first search:
+
 ```bash
 # Guided profile setup
 setup
