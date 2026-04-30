@@ -1,0 +1,14 @@
+# Local active memory files (contain personal job search data — do not commit)
+job-search-profile.md
+job-search-patterns.md
+job-search-sources.md
+*-profile.md
+*-patterns.md
+*-sources.md
+
+# Release planning and personal notes
+scuttle_release_plan.md
+
+# OS
+.DS_Store
+Thumbs.db
