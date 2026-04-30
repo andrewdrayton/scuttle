@@ -16,6 +16,7 @@ hermes skills install andrewdrayton/scuttle/scuttle --yes
 hermes skills install andrewdrayton/scuttle/job-search --yes
 hermes skills install andrewdrayton/scuttle/dig --yes
 hermes skills install andrewdrayton/scuttle/setup --yes
+hermes skills install andrewdrayton/scuttle/discover --yes
 ```
 
 **Before running setup, get a Tavily API key** — it's required for job board searches and free to start: [tavily.com](https://tavily.com). Hermes will prompt you for it when setup loads.
@@ -32,17 +33,25 @@ scuttle
 
 Setup walks you through building your profile conversationally. Paste your resume to skip the background questions, or answer them manually. Takes about 5 minutes.
 
-> **First search takes longer.** With no verified sources yet, the skill discovers ATS endpoints and curated boards from scratch — expect 8-15 minutes. Subsequent runs are faster as your sources file builds up. By run 3-4 you should be down to 2-3 minutes.
+> **Run `discover` before your first search.** With an empty sources file, scuttle can only hit Tier 1 boards — you'll get limited results. `discover` seeds your sources file in one pass (5-10 minutes), and every scuttle run after that is faster and more targeted.
 
 ---
 
 ## How It Works
 
-**Two commands:**
+**The recommended flow:**
+
+```
+setup → discover → scuttle → (dig weekly)
+```
+
+`setup` — builds your profile conversationally. Takes about 5 minutes.
+
+`discover` — seeds your sources file. Finds and verifies ATS endpoints for companies you're watching and job boards for your target industries. Run it once after setup, and any time you add companies to your watch list.
 
 `scuttle` — targeted search. Hits your verified ATS endpoints and curated job boards, applies everything it's learned from your feedback, delivers a scored report. Run it whenever you want an update.
 
-`dig` — broad sweep. Casts a wider net via signal-based queries across aggregators, hunting for roles that standard ATS monitoring misses — founder-proximate ops, talent-adjacent roles, newly-funded startups in chaos mode. Run it weekly at most. Results stage to a file; review them with `digest`.
+`dig` — broad sweep. Casts a wider net via signal-based queries across aggregators, hunting for roles that standard ATS monitoring misses — founder-proximate ops, talent-adjacent roles, newly-funded startups in chaos mode. Run it weekly at most.
 
 **The learning loop:**
 

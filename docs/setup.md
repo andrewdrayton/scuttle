@@ -10,10 +10,15 @@
 ## Install
 
 ```bash
-hermes skills install github:andrewdrayton/scuttle
+hermes skills tap add andrewdrayton/scuttle
+hermes skills install andrewdrayton/scuttle/scuttle --yes
+hermes skills install andrewdrayton/scuttle/job-search --yes
+hermes skills install andrewdrayton/scuttle/dig --yes
+hermes skills install andrewdrayton/scuttle/setup --yes
+hermes skills install andrewdrayton/scuttle/discover --yes
 ```
 
-This installs three skills: `scuttle`, `job-search`, and `dig`.
+This installs five skills: `scuttle`, `job-search`, `dig`, `setup`, and `discover`.
 
 ---
 
@@ -69,6 +74,20 @@ cp ~/.hermes/skills/personal/scuttle/memory/sources.template.md \
 
 ---
 
+## Seed Your Sources
+
+Before your first search, run discover to build your sources file:
+
+```
+discover
+```
+
+Discover finds and verifies ATS endpoints for companies you're watching and job boards for your target industries. It will ask if there are specific companies you want to probe, then sweep for relevant boards based on your profile.
+
+A populated sources file means faster, better results on your first scuttle run. If you skip this step, scuttle will fall back to Tier 1 board searches only.
+
+---
+
 ## Run Your First Search
 
 In any Hermes session:
@@ -77,7 +96,7 @@ In any Hermes session:
 scuttle
 ```
 
-That's it. The skill reads your three memory files, hits your verified sources, and delivers a scored report.
+The skill reads your three memory files, hits your verified sources, and delivers a scored report.
 
 ---
 
@@ -85,8 +104,10 @@ That's it. The skill reads your three memory files, hits your verified sources, 
 
 | Command | What it does |
 |---|---|
+| `setup` | Guided profile creation — walks you through all sections conversationally and writes the file |
+| `discover` | Source building — finds and verifies ATS endpoints and curated boards, writes them to your sources file |
 | `scuttle` | Full search run — hits all verified ATS endpoints and curated boards, applies learned patterns, delivers report |
-| `dig` | Broad sweep — wide-net Tavily searches for roles that scuttle misses. Slower, run weekly at most. Results staged to `dig-staging.md`, reviewed with `digest` |
+| `dig` | Broad sweep — wide-net Tavily searches for roles that scuttle misses. Slower, run weekly at most. |
 
 ---
 

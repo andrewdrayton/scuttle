@@ -86,30 +86,14 @@ For each result returned apply the profile rubric from the job-search skill. Add
 
 ## Output
 
-Do not deliver results inline unless there are 3 or fewer roles worth surfacing. Stage results to:
+Deliver results inline in the standard scuttle report format: numbered list, Role Fit and Cred scores, one-sentence justification, URL.
 
-`{scuttle.memory_path}/dig-staging.md`
+Cap report at 15 roles. If more passed filtering, surface the highest-scoring ones only.
 
-Append each session's finds under a dated header. Format matches the scuttle report format: numbered list, Fit and Cred scores, one-sentence justification, URL.
+After delivering the report, run the feedback loop: prompt the user to react to each role (applied / pass / ignore [reason] / tell me more). Write reactions to the patterns file exactly as the scuttle feedback loop does.
 
-After staging, deliver a short summary message:
-
-```
-🦀 DIG COMPLETE — [Date]
-
-[N] queries run. [N] roles staged to dig-staging.md.
-[One line on what the strongest find was, if anything.]
-[One line on what dominated the noise this cycle.]
-
-Type "digest" to review what's staged.
-```
-
-If nothing worth staging was found, say so plainly: "Nothing worth staging this cycle. [N] queries run, all noise."
+If nothing worth surfacing was found, say so plainly: "Nothing strong this cycle. [N] queries run, all noise."
 
 ## Token Budget
 
-A clean dig session should cost 25-40K tokens. Cap is 50K. If approaching the cap, stop querying, stage what you have, and note it in the summary.
-
-## The "digest" Command
-
-When the user types "digest", read `{scuttle.memory_path}/dig-staging.md` and deliver all unreviewed results in the scuttle report format. After the user gives feedback, write patterns to the job-search patterns file exactly as the scuttle feedback loop does. Mark reviewed items in the staging file so they are not re-surfaced.
+A clean dig session should cost 25-40K tokens. Cap is 50K. If approaching the cap, stop querying and deliver what you have.
