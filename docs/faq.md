@@ -105,7 +105,7 @@ hermes skills install github:andrewdrayton/scuttle --force
 ```
 
 **I want to run Scuttle on a schedule.**
-Hermes supports scheduled tasks. You can set up a daily or weekly `scuttle` run via `hermes schedule`. See the Hermes docs for scheduling syntax.
+Scheduling is out of scope for Scuttle v1. Hermes supports scheduled tasks natively — if you want automated runs, refer to the Hermes docs to set it up yourself. Scuttle will work fine as the scheduled command, we just don't document the setup.
 
 **I edited a skill file and now updates are blocked.**
 Hermes marks manually-edited bundled skills as user-modified and stops pulling upstream changes. To reset:
