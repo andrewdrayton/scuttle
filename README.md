@@ -114,4 +114,6 @@ The `examples/` directory contains a fully worked profile for reference.
 
 Built by [Andrew Drayton](https://github.com/andrewdrayton). I hate job hunting, so I built a crab.
 
+If Scuttle lands you a job, [buy me a coffee](https://ko-fi.com/andrewdrayton). 🦀
+
 MIT License.
